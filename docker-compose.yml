@@ -9,6 +9,8 @@ services:
       - "5173:5173"
     volumes:
       - ./react-app:/app
+    networks:
+      - my-network
 
   server:
     build: 
@@ -16,7 +18,10 @@ services:
       dockerfile: Dockerfile.server
     ports:
       - "3000:3000"
+    networks:
+      - my-network
     stdin_open: true
     tty: true
 
-
+networks:
+  my-network:

@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import Loading from "../../shared/components/loading/Loading"
 import UserStorage from '../../context/userStore'
 import image from './businesswoman-using-tablet-analysis.jpg'
-import '../../../../css/Login.css'
 
 const Login = () => {
     const { setUser } = useContext(UserStorage)
@@ -37,7 +36,7 @@ const Login = () => {
             <If condition={loading}>
                 <Loading />
             </If>
-            <div className='bg-imag d-flex align-items-center justify-content-center' style={{backgroundImage:`url(${image})`}}> 
+            <div className='bg-imag d-flex align-items-center justify-content-center' style={{backgroundImage:`url(${image})`,height:"92vh",backgroundSize:"cover"}}> 
             <form onSubmit={submitForm} className='w-25 p-4 form-login' >
                 <h2 className='text-center'>Login</h2>
                 <div className="mb-3">

@@ -1,17 +1,7 @@
-FROM node:14 as PRODUCTION_IMAGE
-
+FROM node:14 AS client
 WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-RUN npm build
-
-COPY . .
-
-RUN npm build
-
+COPY ./client/package*.json .
+RUN npm i
+COPY ./client .
 EXPOSE 5173
-
-CMD ["npm","run","dev"]
+CMD ["npm", "run", "dev"]

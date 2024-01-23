@@ -2,12 +2,19 @@ FROM node:14 as BUILD_SERVER
 
 WORKDIR /app
 
-COPY ./client /app/client
+COPY ./server/package*.json .
 
 RUN npm install
 
-RUN npm build
+ENV PORT=3000 \
+    DB_HOST="host.docker.internal" \
+    DB_USER="root" \
+    DB_NAME="company" \
+    ROOT_USER_PASSWORD="039342986" \
+    SECRET_KEY="395586c3f7b1f0b6f5715fca6ace14da" \
+    MODE="development"
 
-EXPOSE 3000
+COPY ./server .
+
 
 CMD ["npm","start"]

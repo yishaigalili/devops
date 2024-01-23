@@ -1,5 +1,5 @@
-const bcrypt = require("bcrypt");
 const { signUpRequest, getUserRequest, logoutRequest, updateDeviceDetails, getUserSafe, getAllConnectionsRquest, addRefreshToken, endConnectionRequest, endAllConnectionRequest } = require("../services/userService")
+const bcryptJs =require("bcryptjs") 
 const jwt = require("jsonwebtoken")
 require("dotenv").config();
 const { accessTokenExpires, refreshTokenExpires } = require("../config.json")
@@ -7,7 +7,7 @@ const { accessTokenExpires, refreshTokenExpires } = require("../config.json")
 const userCtrl = {
     async signup({ body }, res, next) {
         try {
-            body.password = await bcrypt.hash(body.password, 10)
+            body.password = await bcryptJs.hash(body.password, 10)
             body.role = "user";
             await signUpRequest(body)
 
@@ -24,7 +24,7 @@ const userCtrl = {
         try {
             const user = await getUserRequest(body);
             if (!user) return next({ message: "user not found", status: 404 })
-            const isCorrect = await bcrypt.compare(body.password, user.password)
+            const isCorrect = await bcryptJs.compare(body.password, user.password)
 
             if (!isCorrect) return next({ status: 401, message: "incorrect password" })
 
