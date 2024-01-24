@@ -23,4 +23,7 @@ jobs:
         run: docker login -u yishaigalili -p dckr_pat_2XqVygGaAeZ7ZlByCHcv2zEyC-I
 
       - name: Push Docker Image
-        run: docker push yishaigalili/project_js:1.0
+        run: docker tag yishaigalili/project_js:1.0 yishaigalili/project_js:2.0
+
+      - name: Push Docker Image
+        run: docker push yishaigalili/project_js:2.0
