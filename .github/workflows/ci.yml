@@ -20,4 +20,7 @@ jobs:
         run: docker build -t your-docker-username/your-image-name:latest .
 
       - name: Log in to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER
+        run: docker login -u yishaigalili -p dckr_pat_2XqVygGaAeZ7ZlByCHcv2zEyC-I
+
+      - name: Push Docker Image
+        run: docker push yishaigalili/project_js:1.0
