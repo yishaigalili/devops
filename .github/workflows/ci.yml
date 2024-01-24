@@ -17,7 +17,7 @@ jobs:
         uses: docker/setup-docker@v2
 
       - name: Build Docker Image
-        run: docker build -t your-docker-username/your-image-name:latest .
+        run: docker build -t yishaigalili/project_js:1.0 .
 
       - name: Log in to Docker Hub
         run: docker login -u yishaigalili -p dckr_pat_2XqVygGaAeZ7ZlByCHcv2zEyC-I
